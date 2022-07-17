@@ -3,6 +3,7 @@ package arpit.springboot.springbootproject.domian;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
 @Entity
 public class Author
 {
@@ -19,7 +20,6 @@ public class Author
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-
     }
 
     public Author() {
