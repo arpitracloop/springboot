@@ -3,10 +3,9 @@ package com.springrest.crud.controllers;
 import com.springrest.crud.entities.Customer;
 import com.springrest.crud.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,13 +15,6 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-
-    @GetMapping("/home")
-    public String home()
-    {
-        return "This is a home page";
-    }
-
     //get customer id
     @GetMapping("/customerid")
     public List<Integer> getCustomer_id()
@@ -31,6 +23,14 @@ public class CustomerController {
 
     }
 
+    @GetMapping("/customers")
+    public List<Customer> getCustomers()
+    {
+        return this.customerService.getCustomerList();
+    }
+
+
+    // add new customer
     @PostMapping("/addcustomer")
     public Customer addCustomer(@RequestBody Customer customer)
     {
@@ -42,4 +42,22 @@ public class CustomerController {
 //        return this.customerService.getCustomer_id()
 //    }
 
+    // update customer
+    @PutMapping("/updatecustomer")
+    public Customer updateCustomer(@RequestBody Customer customer)
+    {
+        return this.customerService.updateCustomer(customer);
+    }
+
+    @DeleteMapping("/deletecustomer{Customer_id}")
+    public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable String Customer_id)
+    {
+        try{
+            this.customerService.deleteCustomer(Long.parseLong(Customer_id));
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch(Exception e)
+        {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
