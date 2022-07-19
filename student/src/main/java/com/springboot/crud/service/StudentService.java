@@ -19,17 +19,22 @@ public class StudentService {
         studentList.add(new Student(1,"Arpit",10,788676656,"Haridwar","arpit@racloop.com"));
 
 
+
         return studentList;
     }
 
     public List<Student> getStudentList()
     {
+
+        studentList();
+
         return studentList;
     }
 
     public Student addStudent(Student student)
     {
-        studentList.add(student);
+
+        studentDao.save(student);
         return student;
     }
 
@@ -50,7 +55,9 @@ public class StudentService {
     }
 
     public Student deleteStudent(long parseLong) {
+        studentDao.deleteById(parseLong);
         return null;
+
     }
 
 
