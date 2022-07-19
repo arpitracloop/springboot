@@ -28,10 +28,19 @@ public class Account {
     public int getAccount_number() {
         return Account_number;
     }
-
-    public void setAccount_number(int account_number) {
-        Account_number = account_number;
-    }
+//
+//    public void setAccount_number() {
+//        for(Account account : Account)
+//        {
+//            if(account )
+//
+//        }
+//        Account_number = account_number;
+//    }
+//    public void setAccount_number(int account_number) {
+//
+//        Account_number = account_number;
+//    }
 
     public String getAccount_type() {
         return Account_type;

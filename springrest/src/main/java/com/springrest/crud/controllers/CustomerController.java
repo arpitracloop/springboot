@@ -15,14 +15,14 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    //get customer id
+    //get customers by  id
     @GetMapping("/customerid")
     public List<Integer> getCustomer_id()
     {
         return this.customerService.getCustomer_id();
 
     }
-
+    //get list of customers
     @GetMapping("/customers")
     public List<Customer> getCustomers()
     {
@@ -36,11 +36,11 @@ public class CustomerController {
     {
         return this.customerService.addCustomer(customer);
     }
-//    @GetMapping("/customerDetails{}")
-//    public Customer getDetails(@PathVariable String customer)
-//    {
-//        return this.customerService.getCustomer_id()
-//    }
+    @GetMapping("/customerDetails{Customer_id}")
+    public Customer getDetails(@PathVariable String customer)
+    {
+        return (Customer) this.customerService.getCustomer_id();
+    }
 
     // update customer
     @PutMapping("/updatecustomer")

@@ -1,18 +1,32 @@
 package com.springrest.crud.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-
+@Entity
 public class Customer {
 
+    @Id
     private int Customer_id;
     private String Customer_first_name;
     private String Customer_last_name;
     private int Customer_phone_number;
     private String Customer_email;
 
-    private Set<Account> account = new HashSet<>();
+    private long Account_number;
+//    private Set<Account> account = new HashSet<>();
+
+    public long getAccount_number() {
+        return Account_number;
+    }
+
+    public void setAccount_number(long account_number) {
+        Account_number = account_number;
+    }
+
+    public Customer(long account_number) {
+        Account_number = account_number;
+    }
 
     public Customer(int customer_id, String customer_first_name, String customer_last_name, int customer_phone_number, String customer_email)
     {
@@ -68,13 +82,13 @@ public class Customer {
         Customer_email = customer_email;
     }
 
-    public Set<Account> getAccount() {
-        return account;
-    }
-
-    public void setAccount(Set<Account> account) {
-        this.account = account;
-    }
+//    public Set<Account> getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(Set<Account> account) {
+//        this.account = account;
+//    }
 
     @Override
     public String toString() {
