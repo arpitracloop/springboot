@@ -1,65 +1,48 @@
 package com.springboot.crud.service;
 
-import com.springboot.crud.dao.StudentDao;
+import com.springboot.crud.repository.StudentRepository;
 import com.springboot.crud.entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
-    private StudentDao studentDao;
+    @Autowired
+    private StudentRepository studentRepository;
 
     List<Student> studentList;
 
-
-    public List<Student> studentList(){
-        studentList=new ArrayList<>();
-        studentList.add(new Student(1,"Arpit",10,788676656,"Haridwar","arpit@racloop.com"));
-
-
-
-        return studentList;
-    }
-
-    public List<Student> getStudentList()
+    public Iterable<Student> getStudentList()
     {
 
-        studentList();
+        return studentRepository.findAll();
 
-        return studentList;
+    }
+
+    public Optional<Student> getStudentList(long id)
+    {
+        return studentRepository.findById(id);
     }
 
     public Student addStudent(Student student)
     {
-
-        studentDao.save(student);
-        return student;
+       return studentRepository.save(student);
     }
 
-    public Student updateStudent(Student student)
-    {
-        studentList.forEach(e->
-        {
-            if(e.getId()==student.getId())
-            {
-                e.setName(student.getName());
-                e.setStandard(student.getStandard());
-                e.setAddress(student.getAddress());
-                e.setContact(student.getContact());
-                e.setEmail(student.getEmail());
-            }
-        });
-        return student;
-    }
+//    public Student updateStudent(long id) {
+//
+//
+//    }
 
-    public Student deleteStudent(long parseLong) {
-        studentDao.deleteById(parseLong);
+    public Student deleteStudent(long id) {
+
+        studentRepository.deleteById(id);
+
         return null;
-
     }
-
 
 
 }

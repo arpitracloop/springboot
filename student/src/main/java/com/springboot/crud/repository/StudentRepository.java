@@ -1,9 +1,9 @@
-package com.springboot.crud.dao;
+package com.springboot.crud.repository;
 
 import com.springboot.crud.entity.Student;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudentDao extends CrudRepository<Student, Long> {
+public interface StudentRepository extends CrudRepository<Student, Long> {
 }
