@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Student {
 
     @Id
+    @GeneratedValue
     @Column
     private long Id;
     @Column
