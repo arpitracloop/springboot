@@ -3,14 +3,21 @@ package com.springboot.crud.entity;
 import javax.persistence.*;
 
 @Entity
+@Table
 public class Student {
 
     @Id
+    @Column
     private long Id;
+    @Column
     private String Name;
+    @Column
     private int Standard;
+    @Column
     private long Contact;
+    @Column
     private String Address;
+    @Column
     private String Email;
 
     public Student(long id, String name, int standard, long contact, String address, String email) {
@@ -25,7 +32,7 @@ public class Student {
     public Student() {
     }
 
-    public long getId() {
+    public  long getId() {
         return Id;
     }
 
@@ -49,7 +56,7 @@ public class Student {
         Standard = standard;
     }
 
-    public long getContact() {
+    public  long getContact() {
         return Contact;
     }
 
@@ -57,7 +64,7 @@ public class Student {
         Contact = contact;
     }
 
-    public String getAddress() {
+    public  String getAddress() {
         return Address;
     }
 
@@ -65,7 +72,7 @@ public class Student {
         Address = address;
     }
 
-    public String getEmail() {
+    public  String getEmail() {
         return Email;
     }
 
@@ -95,5 +102,8 @@ public class Student {
         return Id == student.Id;
     }
 
-
+    @Override
+    public int hashCode() {
+        return (int) (Id ^ (Id >>> 32));
+    }
 }

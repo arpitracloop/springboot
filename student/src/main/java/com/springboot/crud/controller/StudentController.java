@@ -5,41 +5,39 @@ import com.springboot.crud.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 public class StudentController
 {
     @Autowired
-    private StudentService studentService;
+    public StudentService studentService;
 
-    @GetMapping("/student")
-    public Iterable<Student> getStudent()
+    @GetMapping("/getAllStudents")
+    private Iterable<Student> getAllStudents()
     {
-        return studentService.getStudentList();
+        return studentService.getAllStudents();
     }
 
-    @GetMapping("/student/{Id}")
-    public Optional<Student> getStudent(@PathVariable long Id)
+    @GetMapping("/getStudentById/{id}")
+    private Student getStudentsById(@PathVariable long Id)
     {
-        return studentService.getStudentList(Id);
+        return studentService.getStudentsById;
     }
 
-    @PostMapping("/student")
-    public Student addStudent(@RequestBody Student student)
+    @PostMapping("/addStudent")
+    private Student addStudent(@RequestBody Student student)
     {
         return studentService.addStudent(student);
     }
 
-    @PutMapping("/student/{Id}")
-    public Student updateStudent(@PathVariable long Id)
+    @PutMapping("/updateStudent")
+    private Student updateStudent(@RequestBody Student student)
     {
-        return studentService.updateStudent(Id);
+        return studentService.updateStudent(student);
     }
 
-    @DeleteMapping("/student/{Id}")
-    public Student deleteStudent(@PathVariable long Id)
+    @DeleteMapping("/deleteStudent/{Id}")
+    private Student deleteStudentById(@PathVariable long Id)
     {
-        return studentService.deleteStudent(Id);
+        return studentService.deleteStudentById(Id);
     }
 }
