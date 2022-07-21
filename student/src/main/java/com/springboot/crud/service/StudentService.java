@@ -5,24 +5,29 @@ import com.springboot.crud.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class StudentService {
+    Student student;
 
-    public List<Student> getAllStudents;
-    public Student getStudentsById;
+ //use jpa repo instead of crud
+    // pagination
+    // exception handling
+
+
     @Autowired
     private StudentRepository studentRepository;
 
     public Iterable<Student> getAllStudents()
     {
-       return studentRepository.findAll();
+       return (Iterable<Student>) studentRepository.findAll();  // it should return either list or page
     }
 
-    public Student getStudentsById(long id)
+    public Optional<Student> getStudentsById(Long id)
     {
-        return studentRepository.findById(id).get();
+        return studentRepository.findById(id);   // this should not return optional instead student
     }
 
     public Student addStudent(Student student)
@@ -30,9 +35,30 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public Student updateStudent(Student student)
+    public Student updateStudent(Student student, Long Id)
     {
-        return studentRepository.save(student);
+        Student student1 = studentRepository.findById(Id).get();
+        if(Objects.nonNull(student.getName())&& !"".equalsIgnoreCase(student.getName()))
+        {
+            student1.setName(student.getName());
+        }
+        if(Objects.nonNull(student.getAddress())&&!"".equalsIgnoreCase(student.getAddress()))
+        {
+            student1.setAddress(student.getAddress());
+        }
+//
+//        Optional<Student> stu = studentRepository.findById(Id);
+//        if(stu.equals(student.getId())){
+//            student.setName(student.getName());
+//            student.setAddress(student.getAddress());
+//            studentRepository.save(student);
+//        }
+//        else {
+//            return null;
+//        }
+//        return student;
+        return studentRepository.save(student1);
+
     }
 
     public Student deleteStudentById(long id)

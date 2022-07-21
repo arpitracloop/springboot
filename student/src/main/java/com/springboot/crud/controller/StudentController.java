@@ -2,10 +2,14 @@ package com.springboot.crud.controller;
 
 import com.springboot.crud.entity.Student;
 import com.springboot.crud.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
+@Slf4j
 public class StudentController
 {
     @Autowired
@@ -18,9 +22,9 @@ public class StudentController
     }
 
     @GetMapping("/getStudentById/{id}")
-    private Student getStudentsById(@PathVariable long Id)
+    private Optional<Student> getStudentsById(@PathVariable Long id)
     {
-        return studentService.getStudentsById(Id);
+        return studentService.getStudentsById(id);
     }
 
     @PostMapping("/addStudent")
@@ -29,10 +33,11 @@ public class StudentController
         return studentService.addStudent(student);
     }
 
-    @PutMapping("/updateStudent")
-    private Student updateStudent(@RequestBody Student student)
+    @PutMapping("/updateStudent/{id}")
+    private Student updateStudent(@RequestBody Student student, @PathVariable Long id)
     {
-        return studentService.updateStudent(student);
+
+        return studentService.updateStudent(student,id);
     }
 
     @DeleteMapping("/deleteStudent/{Id}")
