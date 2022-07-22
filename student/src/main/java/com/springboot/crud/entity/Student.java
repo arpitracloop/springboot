@@ -5,42 +5,23 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-//@Table
 @Data
-//@Getter  // use data in place of getter and setter
-//@Setter
-//@ToString
-//@NoArgsConstructor
-//@AllArgsConstructor
+
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private Long Id;
+    private Long id;
     @Column
-    private String Name;
+    private String name;
     @Column
-    private int Standard;
+    private int standard;
     @Column
-    private long Contact;
+    private long contact;
     @Column
-    private String Address;
+    private String address;
     @Column
-    private String Email;
+    private String email;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Student student = (Student) o;
-
-        return Id == student.Id;
-    }
-
-    @Override
-    public int hashCode() {
-        return (int) (Id ^ (Id >>> 32));
-    }
 }
