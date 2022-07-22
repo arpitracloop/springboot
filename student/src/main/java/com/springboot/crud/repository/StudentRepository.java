@@ -9,9 +9,11 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    //List<Student> findByName(String name);
 
    List<Student> findByNameLike(String name);
+   List<Student> findByNameAndAddress(String name, String address);
+   List<Student> findByName(String name);
+
 
 
 }

@@ -23,10 +23,9 @@ public class StudentController
     public StudentService studentService;
 
     @GetMapping("/getStudentByPaging/{pageNo}/{pageSize}")
-    public List<Student> getPaginatedStudent(@PathVariable int pageNo,
-                                               @PathVariable int pageSize) {
+    public List<Student> getPaginatedStudent(@PathVariable int pageNo, @PathVariable int pageSize) {
 
-        return studentService.findPaginated(pageNo, pageSize);
+        return studentService.findPaginatedStudent(pageNo, pageSize);
     }
     @GetMapping("/getAllStudents")
     private List<Student> getAllStudents()
@@ -35,10 +34,10 @@ public class StudentController
     }
 
     @GetMapping("/getStudentById/{id}")
-    private Student getStudentsById(@PathVariable Long id)
-    {
+    private ResponseEntity<Student> getStudentsById(@PathVariable Long id) throws Exception {
         return studentService.getStudentsById(id);
     }
+
 
     @PostMapping("/addStudent")
     private Student addStudent(@RequestBody Student student)
@@ -59,17 +58,23 @@ public class StudentController
         return studentService.deleteStudentById(id);
     }
 
-//    @GetMapping("/findByName/{name}")
-//    private List<Student> findByName(@PathVariable String name)
-//    {
-//        return studentService.findByName(name);
-//    }
-
     @GetMapping("/findStudentByNameLike/name")
-    public ResponseEntity<List<Student>> findStudentByNameLike(@RequestParam String name)
-    {
-        return new ResponseEntity<List<Student>>(studentRepository.findByNameLike("%"+name+"%"), HttpStatus.OK);
+    public ResponseEntity<List<Student>> findStudentByNameLike(@RequestParam String name) throws Exception {
+        return studentService.findStudentByNameLike(name);
     }
+
+    @GetMapping("/findStudentByNameAndAddress/nameandaddress")
+    public ResponseEntity<List<Student>> findStudentByNameAndAddress(@RequestParam String name, @RequestParam String address)
+    {
+        return new ResponseEntity<List<Student>>(studentRepository.findByNameAndAddress(name,address), HttpStatus.OK);
+    }
+
+    @GetMapping("/findStudentByName/name")
+    public ResponseEntity<List<Student>> findStudentByName(@RequestParam String name)
+    {
+        return new ResponseEntity<List<Student>>(studentRepository.findByName(name),HttpStatus.OK);
+    }
+
 
 }
 
