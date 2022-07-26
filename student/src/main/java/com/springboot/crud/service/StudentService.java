@@ -11,30 +11,49 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class StudentService {
-    Student student;
 
-    //use jpa repo instead of crud  - done
-    // pagination - done
     // exception handling
     StudentController studentController;
-
 
     @Autowired
     private StudentRepository studentRepository;
 
-    public List<Student> getAllStudents() {
-        return studentRepository.findAll();  // it should return either list or page
+//    // get student by page
+    public List<Student> findPaginatedStudent(int pageNo, int pageSize) {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        Page<Student> pagedResult =studentRepository.findAll(paging);
+        Map<String, Object> response = new HashMap<>();
+//        response.put("students", student);
+        response.put("currentPage", pagedResult.getNumber());
+        response.put("totalItems", pagedResult.getTotalElements());
+        response.put("totalPages", pagedResult.getTotalPages());
+        return pagedResult.toList();
+
     }
 
+    // get all students
+    public List<Student> getAllStudents()
+    {
+        Student student = new Student();
+
+        if(student.getDel().equals(false))
+        {
+            return studentRepository.findAll();
+        }
+        else {
+            return null;
+        }
+          // it should return either list or page
+    }
+
+    //get students by id
     public ResponseEntity<Student> getStudentsById(Long id) throws Exception {
         Optional<Student> studentOptional= studentRepository.findById(id);
-        if(studentOptional.isPresent())
+        if(studentOptional.isPresent() && studentOptional.get().getDel().equals(false))
         {
             return new ResponseEntity<>(studentOptional.get(),HttpStatus.OK);
         }
@@ -42,12 +61,14 @@ public class StudentService {
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
 
-
-
-    public Student addStudent(Student student) {
+    //add student
+    public Student addStudent(Student student)
+    {
+        student.setDel(false);
         return studentRepository.save(student);
     }
 
+    // update student
     public Student updateStudent(Student student, Long Id)
     {
         Student student1 = studentRepository.findById(Id).get();
@@ -59,16 +80,25 @@ public class StudentService {
         }
         return studentRepository.save(student1);
     }
+
+    //delete student
     public Student deleteStudentById(Long id) {
-        studentRepository.deleteById(id);
-        return null;
+        Optional<Student> student = studentRepository.findById(id);
+        if(student.isPresent() && student.get().getDel().equals(false)) {
+            student.get().setDel(true);
+            studentRepository.save(student.get());
+            return student.get();
+        }
+        else {
+
+            return null;
+        }
+//        student.setDel(true);
+//        return null;
     }
-    public List<Student> findPaginatedStudent(int pageNo, int pageSize) {
-        Pageable paging = PageRequest.of(pageNo, pageSize);
-        Page<Student> pagedResult =studentRepository.findAll(paging);
-        return pagedResult.toList();
-    }
-    public ResponseEntity<List<Student>> findStudentByNameLike(String name) throws Exception
+
+    //get student by name like
+    public ResponseEntity<List<Student>> findStudentByNameLike(String name)
     {
         List<Student> studentList = studentRepository.findByNameLike(name);
         if(studentList.contains(name))
@@ -79,7 +109,30 @@ public class StudentService {
         {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
+    }
 
+    // get student by name and address
+    public ResponseEntity<List<Student>> findStudentByNameAndAddress(String name, String address) {
+        List<Student> studentList = studentRepository.findByNameAndAddress(name, address);
+        if(studentList.contains(name)||studentList.contains(address))
+        {
+            return new ResponseEntity<>(studentRepository.findByNameAndAddress(name, address),HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //get student by name
+    public ResponseEntity<List<Student>> findStudentByName(String name) {
+        List<Student> studentList = studentRepository.findByName(name);
+        if(studentList.contains(name))
+        {
+            return new ResponseEntity<>(studentRepository.findByName(name),HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }
 

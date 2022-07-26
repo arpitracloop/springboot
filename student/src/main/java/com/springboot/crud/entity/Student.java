@@ -23,5 +23,7 @@ public class Student {
     private String address;
     @Column
     private String email;
+    @Column
+    private Boolean del;
 
 }
