@@ -59,8 +59,8 @@ public class StudentController
     }
 
     //delete student by id
-    @DeleteMapping("/deleteStudent/{Id}")
-    private Student deleteStudentById(@PathVariable Long id)
+    @DeleteMapping("/deleteStudent/{id}")
+    private Student deleteStudentById(@PathVariable("id") Long id)
     {
         return studentService.deleteStudentById(id);
     }
