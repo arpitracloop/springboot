@@ -17,28 +17,8 @@ import java.util.Optional;
 
 @Service
 public class StudentService {
-
-
-
-
     @Autowired
     private StudentRepository studentRepository;
-
-//    // get student by page
-//    public List<Student> findPaginatedStudent(int pageNo, int pageSize) {
-//        Pageable paging = PageRequest.of(pageNo, pageSize);
-//        Page<Student> pagedResult =studentRepository.findAll(paging);
-//        StudentDto studentDto = new StudentDto();
-//        studentDto.setTotalPage(pagedResult.getTotalPages());
-//        studentDto.setTotalElement(pagedResult.getTotalPages() * pageSize);
-////        Map<String, Object> response = new HashMap<>();
-////        response.put("students", student);
-////        response.put("currentPage", pagedResult.getNumber());
-////        response.put("totalItems", pagedResult.getTotalElements());
-////        response.put("totalPages", pagedResult.getTotalPages());
-//        return pagedResult.toList();
-//
-//    }
 
     public StudentDto findPaginatedStudent(int pageNo, int pageSize) {
         Pageable paging = PageRequest.of(pageNo, pageSize);
@@ -49,23 +29,17 @@ public class StudentService {
         studentDto.setTotalElement(pagedResult.getTotalElements());
         studentDto.setCurrentPage(pageNo);
         return studentDto;
-
     }
-
-
-    // get all students
-    public List<Student> getAllStudents()
-    {
-        Student student = new Student();
-
-        if(student.getDel().equals(false))
-        {
-            return studentRepository.findAll();
+   // get all students
+    public List<Student> getAllStudents() {
+        List<Student> studentList = studentRepository.findAll();
+        for(Student student : studentList){
+            if(student.getDel().equals(false))
+            {
+                return studentRepository.findStudentByIdAndDel(student.getId(), false);
+            }
         }
-        else {
-            return null;
-        }
-          // it should return either list or page
+        return null;
     }
 
     //get students by id
@@ -108,11 +82,8 @@ public class StudentService {
             return student.get();
         }
         else {
-
             return null;
         }
-//        student.setDel(true);
-//        return null;
     }
 
     //get student by name like
