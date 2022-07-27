@@ -1,6 +1,6 @@
 package com.springboot.crud.service;
 
-import com.springboot.crud.controller.StudentController;
+import com.springboot.crud.dto.StudentDto;
 import com.springboot.crud.entity.Student;
 import com.springboot.crud.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,29 +11,47 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class StudentService {
 
-    // exception handling
-    StudentController studentController;
+
+
 
     @Autowired
     private StudentRepository studentRepository;
 
 //    // get student by page
-    public List<Student> findPaginatedStudent(int pageNo, int pageSize) {
+//    public List<Student> findPaginatedStudent(int pageNo, int pageSize) {
+//        Pageable paging = PageRequest.of(pageNo, pageSize);
+//        Page<Student> pagedResult =studentRepository.findAll(paging);
+//        StudentDto studentDto = new StudentDto();
+//        studentDto.setTotalPage(pagedResult.getTotalPages());
+//        studentDto.setTotalElement(pagedResult.getTotalPages() * pageSize);
+////        Map<String, Object> response = new HashMap<>();
+////        response.put("students", student);
+////        response.put("currentPage", pagedResult.getNumber());
+////        response.put("totalItems", pagedResult.getTotalElements());
+////        response.put("totalPages", pagedResult.getTotalPages());
+//        return pagedResult.toList();
+//
+//    }
+
+    public StudentDto findPaginatedStudent(int pageNo, int pageSize) {
         Pageable paging = PageRequest.of(pageNo, pageSize);
         Page<Student> pagedResult =studentRepository.findAll(paging);
-        Map<String, Object> response = new HashMap<>();
-//        response.put("students", student);
-        response.put("currentPage", pagedResult.getNumber());
-        response.put("totalItems", pagedResult.getTotalElements());
-        response.put("totalPages", pagedResult.getTotalPages());
-        return pagedResult.toList();
+        StudentDto studentDto = new StudentDto();
+        studentDto.setStudents(pagedResult.getContent());
+        studentDto.setTotalPage(pagedResult.getTotalPages());
+        studentDto.setTotalElement(pagedResult.getTotalElements());
+        studentDto.setCurrentPage(pageNo);
+        return studentDto;
 
     }
+
 
     // get all students
     public List<Student> getAllStudents()
