@@ -1,5 +1,6 @@
 package com.springboot.crud.controller;
 
+import com.springboot.crud.dto.StudentDto;
 import com.springboot.crud.entity.Student;
 import com.springboot.crud.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,9 +19,14 @@ public class StudentController
     public StudentService studentService;
 
     // for getting students in page
+//    @GetMapping("/getStudentByPaging/{pageNo}/{pageSize}")
+//    public List<Student> getPaginatedStudent(@PathVariable int pageNo, @PathVariable int pageSize)
+//    {
+//        return studentService.findPaginatedStudent(pageNo, pageSize);
+//    }
+
     @GetMapping("/getStudentByPaging/{pageNo}/{pageSize}")
-    public List<Student> getPaginatedStudent(@PathVariable int pageNo, @PathVariable int pageSize)
-    {
+    public StudentDto getPaginatedStudent(@PathVariable int pageNo, @PathVariable int pageSize) {
         return studentService.findPaginatedStudent(pageNo, pageSize);
     }
 
