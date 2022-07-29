@@ -21,11 +21,12 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    //add user
     public User addUser(User user){
         user.setUserPassword(getEncodedPassword(user.getUserPassword()));
         return userRepo.save(user);
     }
-
+    //assign role to user
     public User assignRole(String username, String roleName) throws Exception{
         try{
             User user = userRepo.findById(username).get();
@@ -40,7 +41,7 @@ public class UserService {
             throw new Exception("No Such User");
         }
     }
-
+    // encrypted password
     public String getEncodedPassword(String password){
         return passwordEncoder.encode(password);
     }
