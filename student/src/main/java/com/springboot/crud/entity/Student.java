@@ -3,10 +3,13 @@ package com.springboot.crud.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
 
     @Id
@@ -22,8 +25,16 @@ public class Student {
     @Column
     private String address;
     @Column
+    private String userName;
+    @Column
     private String email;
     @Column
+    private String userPassword;
+    @Column
     private Boolean del;
+    @Column
+    @NotNull
+    @Size(max=10,min = 10)
+    private Long parentContact;
 
 }
