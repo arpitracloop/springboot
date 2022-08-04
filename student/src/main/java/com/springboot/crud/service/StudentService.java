@@ -50,15 +50,25 @@ public class StudentService {
             return new ResponseEntity<>(studentOptional.get(),HttpStatus.OK);
         }
         else
+
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
 
     //add student
-    public Student addStudent(Student student)
+    public ResponseEntity<Student> addStudent(Student student)
     {
-        student.setDel(false);
-        return studentRepository.save(student);
+
+            student.setDel(false);
+            return new ResponseEntity<>(studentRepository.save(student), HttpStatus.OK);
+
+
     }
+//    public Student addStudent(Student student)
+//    {
+//
+//        student.setDel(false);
+//        return studentRepository.save(student);
+//    }
 
     // update student
     public Student updateStudent(Student student, Long Id)

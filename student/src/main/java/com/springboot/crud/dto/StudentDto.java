@@ -14,4 +14,7 @@ public class StudentDto {
     private long totalElement;
 
 
+    private long parentContact;
+
+
 }
