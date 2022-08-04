@@ -4,12 +4,10 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 @Service
 public class DecryptService {
@@ -47,18 +45,18 @@ public class DecryptService {
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             try {
-            BufferedReader br = new BufferedReader(new FileReader("static/minda.key"));
-            while((key= br.readLine())!=null)
-            {
+                File file = new File("/classpath:resources\\key\\minda.key");
+                FileInputStream fl = new FileInputStream(file);
+                 // BufferedReader br = new BufferedReader(new FileReader("/classpath:static/minda.key"));
+                 while((key= Arrays.toString(fl.readAllBytes()))!=null)
+                  {
+                      System.out.println(key);
+                 }
 
-                System.out.println(key);
-            }
-            br.close();
         }
         catch(FileNotFoundException e)
         {
             System.out.println("File not find exception");
-
         }
         catch (IOException e)
         {
