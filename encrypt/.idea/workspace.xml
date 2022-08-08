@@ -2,36 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e31c1152-0572-4546-8eb8-734bd23bd878" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../decryption/src/main/java/com/springboot/decryption/service/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../newStudent/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../newStudent/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../newStudent/.idea/newStudent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../newStudent/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../newStudent/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/RecipeApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Ingredient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Notes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Recipe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/src/test/java/com/springboot/recipe/RecipeApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Difficulty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Carot-v3" beforeDir="false" afterPath="$PROJECT_DIR$/../Carot-v3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Encrypt-Decrypt/src/main/java/com/springboot/decrypt/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Encrypt-Decrypt/src/main/java/com/springboot/decrypt/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../decryption/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../decryption/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../decryption/src/main/java/com/springboot/decryption/controller/DecryptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../decryption/src/main/java/com/springboot/decryption/controller/DecryptController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../decryption/src/main/java/com/springboot/decryption/service/DecryptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../decryption/src/main/java/com/springboot/decryption/service/DecryptService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../decryption/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../decryption/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encrypt/AES_Encryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encrypt/AES_Encryption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AES_Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES_Encryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recipe/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../recipe/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recipe/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../recipe/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../springbootproject/spring5webapp" beforeDir="false" afterPath="$PROJECT_DIR$/../springbootproject/spring5webapp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../student/src/main/java/com/springboot/crud/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../student/src/main/java/com/springboot/crud/service/JwtService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +45,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/arpit/Desktop/Spring/encrypt",
+    "last_opened_file_path": "C:/Users/arpit/Desktop/Spring/student/src/main/resources/application.properties",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
