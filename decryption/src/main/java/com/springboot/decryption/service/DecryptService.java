@@ -3,14 +3,25 @@ package com.springboot.decryption.service;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.*;
+import javax.persistence.Lob;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.util.Arrays;
 
 @Service
 public class DecryptService {
+    @Lob
     String encrypt = "K1NlITwVST1hm6nW+SEqo+rfFASFLPUO29a+eG4eVqCZggqBRj8eq0GAsITT7Jc/edhge/X5+s78Z\n" +
             "7psm9d9BRyiZX2V1k3H/ctS8/pehibq+YjCxc7HmmOdMNk+AyUPnQpXt0ZPBRs4SYySPvUSBhEzh0n\n" +
             "x3frxdmgoBx2mwRk2Xb0TaT4HcU7KUvZ8HH3VyTHgs101dIBNWHwi/qj90A/tj+r4TttMsVtOz9bAI\n" +
@@ -37,39 +48,57 @@ public class DecryptService {
             "Sa7FKjA+q+7+Djqb8mjmfsQs/vGc0N0Vp20lQ0LYCQqZ5JYDfYgH2PIx8F0tMArAW7FQ4UwACsZu81\n" +
             "/uEKy0Td/3r3zOrBUeI+hjE870tVwd3G6rtAIsvlcsfAoWOn/";
 
+    @Lob
     byte[] encoded = encrypt.getBytes();
+
+    //
+    public static IvParameterSpec generateIv() {
+        byte[] iv = new byte[16];
+        new SecureRandom().nextBytes(iv);
+        return new IvParameterSpec(iv);
+    }
+    //
+
+    byte[] salt = new byte[16];
 
     private String key;
 
     public String Decryption() throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException {
+
         try {
+
+
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             try {
-                File file = new File("/classpath:resources\\key\\minda.key");
+                File file = new File("src/main/resources/static/minda.key");
                 FileInputStream fl = new FileInputStream(file);
-                 // BufferedReader br = new BufferedReader(new FileReader("/classpath:static/minda.key"));
-                 while((key= Arrays.toString(fl.readAllBytes()))!=null)
-                  {
-                      System.out.println(key);
-                 }
+                key = Arrays.toString(fl.readAllBytes());
+                System.out.println(key);
+                fl.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("File not find exception");
+            } catch (IOException e) {
+                System.out.println("Input - Output file exception");
+            }
+            //
+            KeySpec spec = new PBEKeySpec(key.toCharArray(), salt, 65536, 16);
+            SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            byte[] key = f.generateSecret(spec).getEncoded();
+            SecretKeySpec keySpec = new SecretKeySpec(key, "AES");
 
-        }
-        catch(FileNotFoundException e)
-        {
-            System.out.println("File not find exception");
-        }
-        catch (IOException e)
-        {
-            System.out.println("Input - Output file exception");
-        }
-            SecretKey secretKey = new SecretKeySpec(key.getBytes(),"AES");
-            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            //
+
+            //KeySpec spec = new PBEKeySpec("password".toCharArray(), salt, 65536, 256);
+            //SecretKey secretKey = new SecretKeySpec(key.getBytes(),65536, 256,"AES");
+            //SecretKey secretKey = new SecretKeySpec(key,"AES");
+            cipher.init(Cipher.DECRYPT_MODE, keySpec, generateIv());
             byte[] original = cipher.doFinal(encoded);
-            String originalString = new String(original);
-            return originalString;
-        } catch (IllegalBlockSizeException  e) {
+            return new String(original);
+        } catch (IllegalBlockSizeException e) {
             return "IllegalBlockSizeException";
-        } catch (InvalidKeyException e) {
+        } catch (InvalidKeyException | InvalidAlgorithmParameterException e) {
+            throw new RuntimeException(e);
+        } catch (InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
     }
