@@ -6,7 +6,6 @@ import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import javax.persistence.Lob;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,7 +20,7 @@ import java.util.Arrays;
 
 @Service
 public class DecryptService {
-    @Lob
+
     String encrypt = "K1NlITwVST1hm6nW+SEqo+rfFASFLPUO29a+eG4eVqCZggqBRj8eq0GAsITT7Jc/edhge/X5+s78Z\n" +
             "7psm9d9BRyiZX2V1k3H/ctS8/pehibq+YjCxc7HmmOdMNk+AyUPnQpXt0ZPBRs4SYySPvUSBhEzh0n\n" +
             "x3frxdmgoBx2mwRk2Xb0TaT4HcU7KUvZ8HH3VyTHgs101dIBNWHwi/qj90A/tj+r4TttMsVtOz9bAI\n" +
@@ -47,8 +46,6 @@ public class DecryptService {
             "fl+7/f+tM7ZLUn+pwENYFu9UX8582pnXtxQviziz64J6NHfSOmLkUKJm1bqjhBhTflk05gucqXjXVf\n" +
             "Sa7FKjA+q+7+Djqb8mjmfsQs/vGc0N0Vp20lQ0LYCQqZ5JYDfYgH2PIx8F0tMArAW7FQ4UwACsZu81\n" +
             "/uEKy0Td/3r3zOrBUeI+hjE870tVwd3G6rtAIsvlcsfAoWOn/";
-
-    @Lob
     byte[] encoded = encrypt.getBytes();
 
     //
