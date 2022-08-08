@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e31c1152-0572-4546-8eb8-734bd23bd878" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Difficulty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Carot-v3" beforeDir="false" afterPath="$PROJECT_DIR$/../Carot-v3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../decryption/src/main/java/com/springboot/decryption/service/DecryptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../decryption/src/main/java/com/springboot/decryption/service/DecryptService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recipe/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../recipe/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/../recipe/src/main/java/com/springboot/recipe/domain/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recipe/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../recipe/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../springbootproject/spring5webapp" beforeDir="false" afterPath="$PROJECT_DIR$/../springbootproject/spring5webapp" afterDir="false" />
     </list>
@@ -40,18 +33,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/arpit/Desktop/Spring/student/src/main/resources/application.properties",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/arpit/Desktop/Spring/student/src/main/resources/application.properties&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="AES_Encryption" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AES_Encryption" />
