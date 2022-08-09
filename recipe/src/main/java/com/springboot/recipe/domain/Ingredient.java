@@ -23,4 +23,6 @@ public class Ingredient {
     private UnitOfMeasure uom;
 
 
+    public Ingredient(String ingredient, BigDecimal quantity, UnitOfMeasure measurement) {
+    }
 }
