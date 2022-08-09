@@ -1,10 +1,10 @@
+package com.springboot.encrypt.src.main.java;
+
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
-import java.util.Base64;
 public class AES_Encryption
 {
     static String plainText = "This is a plain text which need to be encrypted by AES Algorithm with CBC Mode";
@@ -37,26 +37,55 @@ public class AES_Encryption
             "/uEKy0Td/3r3zOrBUeI+hjE870tVwd3G6rtAIsvlcsfAoWOn/";
     public static void main(String[] args) throws Exception
     {
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        keyGenerator.init(128);
-
-        // Generate Key
-        SecretKey key = keyGenerator.generateKey();
+//        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+//        keyGenerator.init(128);
+//
+//        // Generate Key
+//        SecretKey key = keyGenerator.generateKey();
 
         // Generating IV.
         byte[] IV = new byte[16];
         SecureRandom random = new SecureRandom();
         random.nextBytes(IV);
 
-        System.out.println("Original Text  : "+plainText);
+//        System.out.println("Original Text  : "+plainText);
+//
+//        byte[] cipherText = encrypt(plainText.getBytes(),key, IV);
+//        System.out.println("Encrypted Text : "+Base64.getEncoder().encodeToString(cipherText) );
 
-        byte[] cipherText = encrypt(plainText.getBytes(),key, IV);
-        System.out.println("Encrypted Text : "+Base64.getEncoder().encodeToString(cipherText) );
+//        String decryptedText = decrypt(temp.getBytes(),key, IV);
+//        System.out.println("DeCrypted Text : "+decryptedText);
 
-        String decryptedText = decrypt(temp.getBytes(),key, IV);
-        System.out.println("DeCrypted Text : "+decryptedText);
+//        String md5Hash = getMD5Hash(temp);
+//        System.out.println("Checksum : "+md5Hash);
 
     }
+//    private static String getMD5Hash(String data) {
+//        String result = null;
+//        try {
+//            MessageDigest digest = MessageDigest.getInstance("MD5");
+//            byte[] hash = digest.digest(data.getBytes("UTF-8"));
+//            return bytesToHex(hash);
+//        }catch(Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return result;
+//    }
+
+//    private static String getSHA256Hash(String plainText) {
+//        String result = null;
+//        try {
+//            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+//            byte[] hash = digest.digest(temp.getBytes("UTF-8"));
+//            return bytesToHex(hash);
+//        }catch(Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return result;
+//    }
+//    private static String  bytesToHex(byte[] hash) {
+//        return DatatypeConverter.printHexBinary(hash).toLowerCase();
+//    }
 
     public static byte[] encrypt (byte[] plaintext,SecretKey key,byte[] IV ) throws Exception
     {

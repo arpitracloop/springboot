@@ -1,8 +1,14 @@
 package com.springboot.recipe.domain;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+@Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
