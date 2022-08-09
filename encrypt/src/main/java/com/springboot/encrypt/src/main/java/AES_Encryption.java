@@ -1,10 +1,5 @@
 package com.springboot.encrypt.src.main.java;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.SecureRandom;
 public class AES_Encryption
 {
     static String plainText = "This is a plain text which need to be encrypted by AES Algorithm with CBC Mode";
@@ -44,9 +39,9 @@ public class AES_Encryption
 //        SecretKey key = keyGenerator.generateKey();
 
         // Generating IV.
-        byte[] IV = new byte[16];
-        SecureRandom random = new SecureRandom();
-        random.nextBytes(IV);
+//        byte[] IV = new byte[16];
+//        SecureRandom random = new SecureRandom();
+//        random.nextBytes(IV);
 
 //        System.out.println("Original Text  : "+plainText);
 //
@@ -86,45 +81,45 @@ public class AES_Encryption
 //    private static String  bytesToHex(byte[] hash) {
 //        return DatatypeConverter.printHexBinary(hash).toLowerCase();
 //    }
+//
+//    public static byte[] encrypt (byte[] plaintext,SecretKey key,byte[] IV ) throws Exception
+//    {
+//        //Get Cipher Instance
+//        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+//
+//        //Create SecretKeySpec
+//        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
+//
+//        //Create IvParameterSpec
+//        IvParameterSpec ivSpec = new IvParameterSpec(IV);
+//
+//        //Initialize Cipher for ENCRYPT_MODE
+//        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+//
+//        //Perform Encryption
+//        byte[] cipherText = cipher.doFinal(plaintext);
+//
+//        return cipherText;
+//    }
+//
 
-    public static byte[] encrypt (byte[] plaintext,SecretKey key,byte[] IV ) throws Exception
-    {
-        //Get Cipher Instance
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-
-        //Create SecretKeySpec
-        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
-
-        //Create IvParameterSpec
-        IvParameterSpec ivSpec = new IvParameterSpec(IV);
-
-        //Initialize Cipher for ENCRYPT_MODE
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
-
-        //Perform Encryption
-        byte[] cipherText = cipher.doFinal(plaintext);
-
-        return cipherText;
-    }
-
-
-    public static String decrypt (byte[] cipherText, SecretKey key,byte[] IV) throws Exception
-    {
-        //Get Cipher Instance
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-
-        //Create SecretKeySpec
-        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
-
-        //Create IvParameterSpec
-        IvParameterSpec ivSpec = new IvParameterSpec(IV);
-
-        //Initialize Cipher for DECRYPT_MODE
-        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
-
-        //Perform Decryption
-        byte[] decryptedText = cipher.doFinal(cipherText);
-
-        return new String(decryptedText);
-    }
+//    public static String decrypt (byte[] cipherText, SecretKey key,byte[] IV) throws Exception
+//    {
+//        //Get Cipher Instance
+//        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+//
+//        //Create SecretKeySpec
+//        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
+//
+//        //Create IvParameterSpec
+//        IvParameterSpec ivSpec = new IvParameterSpec(IV);
+//
+//        //Initialize Cipher for DECRYPT_MODE
+//        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+//
+//        //Perform Decryption
+//        byte[] decryptedText = cipher.doFinal(cipherText);
+//
+//        return new String(decryptedText);
+//    }
 }

@@ -26,9 +26,13 @@ public class DetailController {
     }
 
     @GetMapping("/encryptedDetails")
-    public String getEncryptedDetails(, SecretKey key, byte[] IV )
-    {
-        return detailService.encrypt(byte[] plaintext, SecretKey key, byte[] IV );
+    public byte[] getEncryptedDetails( ) throws Exception {
+        return detailService.encrypt();
+    }
+
+    @GetMapping("/decrypt")
+    public String getDecryptedDetails()throws Exception {
+        return detailService.decrypt();
     }
 
     public String getChecksum(String details)

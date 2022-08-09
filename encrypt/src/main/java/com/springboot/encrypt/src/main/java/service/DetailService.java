@@ -1,6 +1,7 @@
 package com.springboot.encrypt.src.main.java.service;
 
 import com.springboot.encrypt.src.main.java.model.Details;
+import com.springboot.encrypt.src.main.java.model.FPSDetails;
 import com.springboot.encrypt.src.main.java.repository.DetailRepository;
 
 import javax.crypto.Cipher;
@@ -17,31 +18,53 @@ import java.util.List;
 public class DetailService {
 
     public DetailRepository detailRepository;
+
+    public Details addData(Details details){
+        details.setGroupId(details.getGroupId());
+        details.setDistrictName(details.getDistrictName());
+        details.setLastConsignee(details.getLastConsignee());
+
+    }
     public List<Details> getDetails() {
         return detailRepository.findAll();
     }
-    public static byte[] encrypt (byte[] plaintext, SecretKey key, byte[] IV ) throws Exception
+    public static byte[] encrypt () throws Exception
     {
         //Get Cipher Instance
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
         //Create SecretKeySpec
-        SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
+        SecretKeySpec keySpec = new SecretKeySpec(getGeneratedKey().getEncoded(), "AES");
 
         //Create IvParameterSpec
-        IvParameterSpec ivSpec = new IvParameterSpec(IV);
+        IvParameterSpec ivSpec = new IvParameterSpec(getGeneratedIv());
 
         //Initialize Cipher for ENCRYPT_MODE
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
 
         //Perform Encryption
-        byte[] cipherText = cipher.doFinal(plaintext);
+        byte[] cipherText = cipher.doFinal();
 
         return cipherText;
     }
+    public static String decrypt () throws Exception
+    {
+        //Get Cipher Instance
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
-    public String encypt() {
+        //Create SecretKeySpec
+        SecretKeySpec keySpec = new SecretKeySpec(getGeneratedKey().getEncoded(), "AES");
 
+        //Create IvParameterSpec
+        IvParameterSpec ivSpec = new IvParameterSpec(getGeneratedIv());
+
+        //Initialize Cipher for DECRYPT_MODE
+        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+
+        //Perform Decryption
+        byte[] decryptedText = cipher.doFinal(cipherText);
+
+        return new String(decryptedText);
     }
 
     public byte[] getBytes(String details) {
@@ -62,7 +85,7 @@ public class DetailService {
         return result;
     }
 
-    public SecretKey getGeneratedKey() throws NoSuchAlgorithmException {
+    public static SecretKey getGeneratedKey() throws NoSuchAlgorithmException {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(128);
 
@@ -76,10 +99,11 @@ public class DetailService {
         return DatatypeConverter.printHexBinary(hash).toLowerCase();
     }
 
-    public byte[] getGeneratedIv() {
+    public static byte[] getGeneratedIv() {
         byte[] IV = new byte[16];
         SecureRandom random = new SecureRandom();
-        return random.nextBytes(IV);
+        random.nextBytes(IV);
+        return IV;
 
 
     }
