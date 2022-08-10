@@ -86,16 +86,18 @@ public class RecipeBootstrap {
         guacRecipe.setDirections("...Directions to make Guac...");
         Notes guacNotes = new Notes();
         guacNotes.setRecipeNotes("This is recipe note ");
+
+        guacNotes.setRecipe(guacRecipe);
         guacRecipe.setNotes(guacNotes);
 
-        guacRecipe.getIngredients().add(new Ingredient("avacado", new BigDecimal(2), eachUom));
-        guacRecipe.getIngredients().add(new Ingredient("salt",new BigDecimal(5),teaspoonUom));
-        guacRecipe.getIngredients().add(new Ingredient("lime juice",new BigDecimal(2),tablespoonUom));
-        guacRecipe.getIngredients().add(new Ingredient("onion",new BigDecimal(2),tablespoonUom));
-        guacRecipe.getIngredients().add(new Ingredient("chiles",new BigDecimal(2),eachUom));
-        guacRecipe.getIngredients().add(new Ingredient("cilantro",new BigDecimal(2),tablespoonUom));
-        guacRecipe.getIngredients().add(new Ingredient("black pepper",new BigDecimal(2),dashUom));
-        guacRecipe.getIngredients().add(new Ingredient("tomatoes",new BigDecimal(5),eachUom));
+        guacRecipe.getIngredients().add(new Ingredient("avacado", new BigDecimal(2), eachUom, guacRecipe));
+        guacRecipe.getIngredients().add(new Ingredient("salt",new BigDecimal(5),teaspoonUom,guacRecipe));
+        guacRecipe.getIngredients().add(new Ingredient("lime juice",new BigDecimal(2),tablespoonUom,guacRecipe));
+        guacRecipe.getIngredients().add(new Ingredient("onion",new BigDecimal(2),tablespoonUom,guacRecipe));
+        guacRecipe.getIngredients().add(new Ingredient("chiles",new BigDecimal(2),eachUom,guacRecipe));
+        guacRecipe.getIngredients().add(new Ingredient("cilantro",new BigDecimal(2),tablespoonUom,guacRecipe));
+        guacRecipe.getIngredients().add(new Ingredient("black pepper",new BigDecimal(2),dashUom,guacRecipe));
+        guacRecipe.getIngredients().add(new Ingredient("tomatoes",new BigDecimal(5),eachUom,guacRecipe));
 
 
         guacRecipe.getCategories().add(americanCategory);
@@ -114,17 +116,22 @@ public class RecipeBootstrap {
 
         Notes tacoNotes = new Notes();
         tacoNotes.setRecipeNotes("... Notes for the recipe...");
+
+        tacoNotes.setRecipe(tacosRecipe);
         tacosRecipe.setNotes(tacoNotes);
 
-        tacosRecipe.getIngredients().add(new Ingredient("Chili Powder", new BigDecimal(2),tablespoonUom));
-        tacosRecipe.getIngredients().add(new Ingredient("Oregano", new BigDecimal(1),teaspoonUom));
-        tacosRecipe.getIngredients().add(new Ingredient("Cumin", new BigDecimal(1),teaspoonUom));
-        tacosRecipe.getIngredients().add(new Ingredient("Sugar", new BigDecimal(1),teaspoonUom));
-        tacosRecipe.getIngredients().add(new Ingredient("Salt", new BigDecimal(5),teaspoonUom));
-        tacosRecipe.getIngredients().add(new Ingredient("Garlic", new BigDecimal(1),eachUom));
+        tacosRecipe.getIngredients().add(new Ingredient("Chili Powder", new BigDecimal(2),tablespoonUom, tacosRecipe));
+        tacosRecipe.getIngredients().add(new Ingredient("Oregano", new BigDecimal(1),teaspoonUom, tacosRecipe));
+        tacosRecipe.getIngredients().add(new Ingredient("Cumin", new BigDecimal(1),teaspoonUom, tacosRecipe));
+        tacosRecipe.getIngredients().add(new Ingredient("Sugar", new BigDecimal(1),teaspoonUom, tacosRecipe));
+        tacosRecipe.getIngredients().add(new Ingredient("Salt", new BigDecimal(5),teaspoonUom, tacosRecipe));
+        tacosRecipe.getIngredients().add(new Ingredient("Garlic", new BigDecimal(1),eachUom, tacosRecipe));
 
+        tacosRecipe.getCategories().add(americanCategory);
+        tacosRecipe.getCategories().add(mexicanCategory);
 
-
+        recipes.add(tacosRecipe);
+        return recipes;
 
 
     }

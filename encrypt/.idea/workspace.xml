@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e31c1152-0572-4546-8eb8-734bd23bd878" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/controller/FPSDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/repository/FPSDetailsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Carot-v3" beforeDir="false" afterPath="$PROJECT_DIR$/../Carot-v3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/AES_Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/AES_Encryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/controller/DetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/controller/DetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/model/FPSDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/model/FPSDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/service/DetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/service/DetailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../springbootproject/spring5webapp" beforeDir="false" afterPath="$PROJECT_DIR$/../springbootproject/spring5webapp" afterDir="false" />
     </list>
