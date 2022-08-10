@@ -14,6 +14,8 @@ public class FPSDetailsService {
         fpsDetails.setOrderNo();
         fpsDetails.setDetails();
 
+        fpsDetailsRepository.save(fpsDetails);
+
     }
     public Iterable<Details> showFpsDetails()
     {

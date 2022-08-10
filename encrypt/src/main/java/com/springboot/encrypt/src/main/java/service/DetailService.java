@@ -3,6 +3,8 @@ package com.springboot.encrypt.src.main.java.service;
 import com.springboot.encrypt.src.main.java.model.Details;
 import com.springboot.encrypt.src.main.java.model.FPSDetails;
 import com.springboot.encrypt.src.main.java.repository.DetailRepository;
+import com.springboot.encrypt.src.main.java.repository.FPSDetailsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -17,7 +19,14 @@ import java.util.List;
 
 public class DetailService {
 
+    @Autowired
     public DetailRepository detailRepository;
+    public FPSDetails fpsDetails;
+    public FPSDetailsRepository fpsDetailsRepository;
+
+    //
+
+    //
 
     public Details addData(Details details){
         details.setGroupId(details.getGroupId());
@@ -25,6 +34,19 @@ public class DetailService {
         details.setLastConsignee(details.getLastConsignee());
 
     }
+
+    public FPSDetails findByLastConsignee(Long lastConsignee)
+    {
+        return detailRepository.findById(Long lastConsignee).map(details->{
+            fpsDetails.setShopId(lastConsignee),
+            fpsDetails.setFpsOwnerName(),
+            fpsDetails.setOrderNo(lastConsignee);
+            fpsDetails.setDetails(details);
+            return fpsDetailsRepository.save(fpsDetails);
+        });
+
+    }
+
     public List<Details> getDetails() {
         return detailRepository.findAll();
     }
@@ -106,5 +128,9 @@ public class DetailService {
         return IV;
 
 
+    }
+
+    public Details saveDetails(Details details) {
+        return detailRepository.save(details);
     }
 }

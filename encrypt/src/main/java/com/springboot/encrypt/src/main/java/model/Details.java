@@ -18,6 +18,7 @@ public class Details {
     private Long lastConsignee;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fpsDetails")
     private FPSDetails fpsDetails;
 
 }

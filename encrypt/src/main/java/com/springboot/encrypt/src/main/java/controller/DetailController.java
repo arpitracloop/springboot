@@ -2,8 +2,11 @@ package com.springboot.encrypt.src.main.java.controller;
 
 import com.springboot.encrypt.src.main.java.model.Details;
 import com.springboot.encrypt.src.main.java.service.DetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.crypto.SecretKey;
 import java.security.NoSuchAlgorithmException;
@@ -12,12 +15,19 @@ import java.util.List;
 @Controller
 public class DetailController {
 
+    @Autowired
     public DetailService detailService;
 
     @GetMapping("/details")
     public List<Details> getDetails()
     {
         return detailService.getDetails();
+    }
+
+    @PostMapping("/setDeatails")
+    public Details setDetails(@RequestBody Details details)
+    {
+        return detailService.saveDetails(details );
     }
 
     public byte[] getBytes(String details)

@@ -25,4 +25,5 @@ public class FPSDetails {
 
     @OneToMany
     private Details details;
+
 }

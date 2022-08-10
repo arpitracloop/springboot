@@ -7,6 +7,15 @@
     <list default="true" id="e31c1152-0572-4546-8eb8-734bd23bd878" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Carot-v3" beforeDir="false" afterPath="$PROJECT_DIR$/../Carot-v3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/controller/DetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/controller/DetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/controller/FPSDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/controller/FPSDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/model/Details.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/model/Details.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/model/FPSDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/model/FPSDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/repository/FPSDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/repository/FPSDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/service/DetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/service/DetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/service/FPSDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/encrypt/src/main/java/service/FPSDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recipe/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../recipe/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-jwt/jwt-spring-boot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../springbootproject/spring5webapp" beforeDir="false" afterPath="$PROJECT_DIR$/../springbootproject/spring5webapp" afterDir="false" />
     </list>
@@ -65,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/arpit/Desktop/Spring/studentcrud",
+    "last_opened_file_path": "C:/Users/arpit/Desktop/Java/Collections/Main/src/Mapping.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
