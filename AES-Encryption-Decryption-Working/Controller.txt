@@ -1,0 +1,51 @@
+package com.minda.carot.v3.trip.dpu.controller;
+
+
+import com.amazonaws.util.json.JSONException;
+import com.minda.carot.v3.trip.dpu.service.TestService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.ws.rs.BeanParam;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+@RestController
+@Slf4j
+@RequestMapping(value="/v3/api/test")
+public class TestController {
+    @Autowired
+    TestService testService;
+
+    @PostMapping("/decrypt")
+    public void decrypt(@BeanParam String cipherText) throws NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, IOException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException {
+        testService.decrypt(cipherText);
+    }
+
+    @GetMapping("/getChecksum")
+    public String getChecksum(@BeanParam String text) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return testService.getCheckSum(text);
+    }
+
+    @PostMapping("/createData")
+    public void createData() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, JSONException {
+        testService.createData();
+    }
+
+    @PostMapping("/createPayload")
+    public void createPayload() throws SocketException, UnknownHostException {
+        testService.createPayload("1","W");
+    }
+}

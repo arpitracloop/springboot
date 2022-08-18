@@ -4,6 +4,7 @@ import com.springboot.encrypt.src.main.java.controller.FPSDetailsController;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Entity
 public class FPSDetails {
 
+    @Autowired
     private FPSDetailsController fpsDetailsController;
 
     @Id
@@ -23,7 +25,7 @@ public class FPSDetails {
     private String fpsOwnerName;
     private Long orderNo;
 
-    @OneToMany
+    @ManyToOne
     private Details details;
 
 }

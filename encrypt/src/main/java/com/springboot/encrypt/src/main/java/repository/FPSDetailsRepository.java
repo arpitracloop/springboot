@@ -1,10 +1,11 @@
 package com.springboot.encrypt.src.main.java.repository;
 
-import com.springboot.encrypt.src.main.java.model.Details;
+import com.springboot.encrypt.src.main.java.model.FPSDetails;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface FPSDetailsRepository extends CrudRepository<Details, Long> {
-
+@Repository
+public interface FPSDetailsRepository extends CrudRepository<FPSDetails, Long> {
 
 
 }

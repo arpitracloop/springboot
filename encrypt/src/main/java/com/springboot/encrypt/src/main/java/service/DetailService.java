@@ -5,6 +5,7 @@ import com.springboot.encrypt.src.main.java.model.FPSDetails;
 import com.springboot.encrypt.src.main.java.repository.DetailRepository;
 import com.springboot.encrypt.src.main.java.repository.FPSDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -12,42 +13,52 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Collections;
 import java.util.List;
 
+@Service
 public class DetailService {
 
     @Autowired
-    public DetailRepository detailRepository;
-    public FPSDetails fpsDetails;
-    public FPSDetailsRepository fpsDetailsRepository;
+    public static DetailRepository detailRepository;
+
+
+//    @Autowired
+//    public FPSDetailsRepository fpsDetailsRepository;
 
     //
 
     //
 
-    public Details addData(Details details){
+    public Details addDetails(Details details){
         details.setGroupId(details.getGroupId());
         details.setDistrictName(details.getDistrictName());
         details.setLastConsignee(details.getLastConsignee());
-
+        detailRepository.save(details);
+        return details;
     }
 
     public FPSDetails findByLastConsignee(Long lastConsignee)
     {
-        return detailRepository.findById(Long lastConsignee).map(details->{
-            fpsDetails.setShopId(lastConsignee),
-            fpsDetails.setFpsOwnerName(),
-            fpsDetails.setOrderNo(lastConsignee);
-            fpsDetails.setDetails(details);
-            return fpsDetailsRepository.save(fpsDetails);
+            detailRepository.findById(lastConsignee).map(details->{
+   //             fpsDetailsRepository.findAllById(lastConsignee);
+              return fpsDetailsRepository.findAllById(Collections.singleton(lastConsignee));
+//                fpsDetails.setFpsOwnerName(fpsDetails.getFpsOwnerName());
+//                fpsDetails.setOrderNo(fpsDetails.getOrderNo());
+//                fpsDetails.setDetails(details);
+         //       return fpsDetailsRepository.save(lastConsignee);
         });
 
+        return null;
     }
 
-    public List<Details> getDetails() {
+    public static List<Details> getDetails() {
         return detailRepository.findAll();
     }
     public static byte[] encrypt () throws Exception
@@ -64,8 +75,20 @@ public class DetailService {
         //Initialize Cipher for ENCRYPT_MODE
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
 
+        // converting list to byte[] array
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos;
+        try{
+            oos = new ObjectOutputStream(baos);
+            oos.writeObject(getDetails());
+        }catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+        byte[] byteArray = baos.toByteArray();
+
         //Perform Encryption
-        byte[] cipherText = cipher.doFinal();
+        byte[] cipherText = cipher.doFinal(byteArray);
 
         return cipherText;
     }
@@ -84,7 +107,7 @@ public class DetailService {
         cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
 
         //Perform Decryption
-        byte[] decryptedText = cipher.doFinal(cipherText);
+        byte[] decryptedText = cipher.doFinal(encrypt());  // encrypt() will return ciphertext
 
         return new String(decryptedText);
     }
@@ -130,7 +153,5 @@ public class DetailService {
 
     }
 
-    public Details saveDetails(Details details) {
-        return detailRepository.save(details);
-    }
+
 }

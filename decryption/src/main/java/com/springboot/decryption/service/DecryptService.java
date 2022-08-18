@@ -88,6 +88,7 @@ public class DecryptService {
             //KeySpec spec = new PBEKeySpec("password".toCharArray(), salt, 65536, 256);
             //SecretKey secretKey = new SecretKeySpec(key.getBytes(),65536, 256,"AES");
             //SecretKey secretKey = new SecretKeySpec(key,"AES");
+
             cipher.init(Cipher.DECRYPT_MODE, keySpec, generateIv());
             byte[] original = cipher.doFinal(encoded);
             return new String(original);

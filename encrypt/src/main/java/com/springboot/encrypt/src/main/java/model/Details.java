@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,8 +19,7 @@ public class Details {
     private String groupId;
     private Long lastConsignee;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fpsDetails")
-    private FPSDetails fpsDetails;
+    @OneToMany
+    private List<FPSDetails> fpsDetails;
 
 }
